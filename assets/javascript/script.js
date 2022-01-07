@@ -1,7 +1,7 @@
 var submitButtonEl = document.querySelector("#submit-button");
 var cityInputEl = document.querySelector("#exampleCity");
-var cityInfoTopDiv = document.querySelector("#cityInfoTopDiv")
-
+var cityInfoTopDiv = document.querySelector("#cityInfoTopDiv");
+var cityHolder = document.querySelector("#cityHolder");
 var clickedSubmit = function(event){
     event.preventDefault();
 
@@ -18,6 +18,7 @@ var clickedSubmit = function(event){
             console.log(data)
             console.log(city)
             listCityConditions(data);
+            storeSearchedCities(data);
         });
       }
       else {
@@ -36,6 +37,16 @@ var listCityConditions = function(stats){
         cityContainer.appendChild(cityNameEl);
         cityInfoTopDiv.appendChild(cityContainer);
         console.log(cityNameEl);  
+}
+
+var storeSearchedCities = function(stats){
+    var searchedCityContainer = document.createElement("div");
+    searchedCityContainer.classList = "col-12";
+    var searchedCityName = document.createElement("span");
+    searchedCityName.textContent = stats.name;
+    searchedCityContainer.appendChild(searchedCityName);
+    cityHolder.appendChild(searchedCityContainer);
+
 }
 submitButtonEl.addEventListener("click", clickedSubmit);
 // getCity();
