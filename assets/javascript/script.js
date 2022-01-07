@@ -1,4 +1,12 @@
 var submitButtonEl = document.querySelector("#submit-button");
+var cityInputEl = document.querySelector("#exampleCity");
+
+var clickedSubmit = function(event){
+    event.preventDefault();
+
+    var city = cityInputEl.value.trim();
+    console.log(city)
+}
 
 var getCity = function(repo) {
     event.preventDefault();
@@ -27,5 +35,5 @@ var listCityConditions = function(stats){
         cityNameEl.textContent = stats.name;
         console.log(cityNameEl)   
 }
-submitButtonEl.addEventListener("click", getCity);
+submitButtonEl.addEventListener("click", clickedSubmit);
 // getCity();
