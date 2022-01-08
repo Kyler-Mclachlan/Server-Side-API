@@ -3,6 +3,7 @@ var submitButtonEl = document.querySelector("#submit-button");
 var cityInputEl = document.querySelector("#exampleCity");
 var currentDivEl = document.querySelector("#current");
 var cityHolder = document.querySelector("#cityHolder");
+var savedButtonsEl = document.querySelector(".searched-cities").click(searchedButtons);
 
 // local storage array
 var count = 0;
@@ -73,6 +74,33 @@ var clickedSubmit = function(event){
     });
   };
 
+var searchedButtons = function(event){
+    event.preventDefault();
+
+    var city = savedButtonsEl.value.trim();
+    console.log(city);   
+    console.log(savedButtonsEl); 
+    // // format the github api url
+    // var currentWeatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ee74d7c74e74e6fbcc878740bbff7545";
+    // // make a get request to url
+    // fetch(currentWeatherAPI).then(function(response) {
+    //   // request was successful
+    //   if (response.ok) {
+    //     response.json().then(function(data) {
+    //         listCityConditions(data);
+    //         storeSearchedCities(data);
+    //         oneCallAPI(data);
+    //         fiveDayForecastAPICall(data);
+    //     });
+    //   }
+    //   else {
+    //     console.log(response);
+    //     alert("There was a problem with your request!");
+    //   }
+    // });
+  };
+
+
 var listCityConditions = function(stats){
     currentDivEl.textContent = "";
     // add code here to check if city exists
@@ -124,6 +152,7 @@ var storeSearchedCities = function(stats){
     // create DOM elements
     var searchedCityContainer = document.createElement("button");
     searchedCityContainer.classList = "searched-cities";
+    searchedCityContainer.id = "searched-cities";
     var searchedCityName = document.createElement("span");
 
     //assinging id for local storage
@@ -386,5 +415,6 @@ var fiveDayForecastAPICall = function(data){
 
 
 submitButtonEl.addEventListener("click", clickedSubmit);
+// savedButtonsEl.addEventListener("click", searchedButtons);
 
 // getCity();
