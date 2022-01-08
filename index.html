@@ -19,12 +19,12 @@
                   </div>
                   <section>
         </header>
-    <Main>
-        <section class="container-lg  mt-5  mr-5 ml-5" >
+    <main id="main" >
+        <!-- <section class="container-lg  mt-5  mr-5 ml-5" >
             <section class="row">
                 <section class="col-3-md pb-" id="grad">
             <div class=" text-dark h2 mt-3 col-12">
-            <!-- Search input -->  Search for a City
+            Search input   Search for a City
                 </div>
                 <form class="col-6">
                     <div class="form-group">
@@ -42,10 +42,29 @@
                     test
                 </div>
         </section>          
-        </section>
+        </section> 
+    </section> -->
+
+    <section class="searchedCities">
+        Search input   Search for a City
+    </div>
+    <form class="">
+        <div class="form-group">
+          <input type="city" class="form-control " id="exampleCity" aria-describedby="cityHelp" placeholder="City Name">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+      </form>
+      <div id="cityHolder">
+            city
+      </div>
+
+    </section>
+    <section id="details">
+        <section id="current"></section>
+        <section id="forecast"></section>
     </section>
 
-    </Main>
+    </main>
         
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/javascript/script.js"> </script>
