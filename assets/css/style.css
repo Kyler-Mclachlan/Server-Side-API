@@ -37,6 +37,15 @@
     margin-bottom: 16px;
     border-radius: 10px;
     background-color: lightgray;
+    height: 2.5vw;
+}
+
+#searched-cities {
+    width: 20vw;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: lightgray;
+    height: 2.5vw;
 }
 
 #cityHolder {

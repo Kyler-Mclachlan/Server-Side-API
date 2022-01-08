@@ -3,7 +3,7 @@ var submitButtonEl = document.querySelector("#submit-button");
 var cityInputEl = document.querySelector("#exampleCity");
 var currentDivEl = document.querySelector("#current");
 var cityHolder = document.querySelector("#cityHolder");
-var savedButtonsEl = document.querySelector(".searched-cities");
+var savedButtonsEl = document.querySelector("#cityHolder");
 
 // local storage array
 var count = 0;
@@ -77,27 +77,27 @@ var clickedSubmit = function(event){
 var searchedButtons = function(event){
     event.preventDefault();
 
-    var city = savedButtonsEl.value.trim();
-    console.log(city);   
-    console.log(savedButtonsEl); 
-    // // format the github api url
-    // var currentWeatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ee74d7c74e74e6fbcc878740bbff7545";
-    // // make a get request to url
-    // fetch(currentWeatherAPI).then(function(response) {
-    //   // request was successful
-    //   if (response.ok) {
-    //     response.json().then(function(data) {
-    //         listCityConditions(data);
-    //         storeSearchedCities(data);
-    //         oneCallAPI(data);
-    //         fiveDayForecastAPICall(data);
-    //     });
-    //   }
-    //   else {
-    //     console.log(response);
-    //     alert("There was a problem with your request!");
-    //   }
-    // });
+    var btn = event.target;
+    var city = btn.getAttribute('data-search');
+    console.log(city);
+
+    // format the github api url
+    var currentWeatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ee74d7c74e74e6fbcc878740bbff7545";
+    // make a get request to url
+    fetch(currentWeatherAPI).then(function(response) {
+      // request was successful
+      if (response.ok) {
+        response.json().then(function(data) {
+            listCityConditions(data);
+            oneCallAPI(data);
+            fiveDayForecastAPICall(data);
+        });
+      }
+      else {
+        console.log(response);
+        alert("There was a problem with your request!");
+      }
+    });
   };
 
 
@@ -145,6 +145,8 @@ var addUVIndex = function(data) {
     var UVIholder = document.createElement("div");
     var uvindexEltext = document.createElement("span");
     var uvindexElscore = document.createElement("span");
+
+    //color score based on rating
     for (i=0;i<1;i++){
         if (data.current.uvi > .8){
             uvindexElscore.classList = "redbox";
@@ -168,8 +170,9 @@ var storeSearchedCities = function(stats){
     // create DOM elements
     var searchedCityContainer = document.createElement("button");
     searchedCityContainer.classList = "searched-cities";
-    searchedCityContainer.id = "searched-cities";
-    var searchedCityName = document.createElement("span");
+    
+    searchedCityName = document.createElement("p");
+    searchedCityName.setAttribute('data-search', stats.name);
 
     //assinging id for local storage
     searchedCityName.id = count;
@@ -201,7 +204,8 @@ var pullLocal = function(){
     for (var i = 0; i < savedCities.length; i++){
         var searchedCityContainer = document.createElement("button");
         searchedCityContainer.classList = "searched-cities";
-        var searchedCityName = document.createElement("span");
+        var searchedCityName = document.createElement("p");
+        searchedCityName.setAttribute('data-search', savedCities[i].cityName);
 
         searchedCityName.textContent = savedCities[i].cityName;
         console.log(savedCities);
