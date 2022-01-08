@@ -22,13 +22,15 @@
 }
 
 #current {
-    background-color: blue;
-    height: 25vw;
+    background-color: white;
+    border: 3px solid black;
+    height: 17vw;
     margin-bottom: 16px;
+    margin-top: 16px;
 }
 
 #forecast {
     background-color: yellow;
-    height: 25vw;
-    margin-bottom: 16px;
+    height: 17vw;
+    margin-bottom: 1px;
 }
