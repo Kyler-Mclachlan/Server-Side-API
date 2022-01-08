@@ -127,11 +127,12 @@ var oneCallAPI = function(data) {
 
 var fiveDayForecast = function(data) {
     var FDFCdayOneDateEL = document.createElement("span");
-    var FDFCdayOneIconEL = document.createElement("span");
+    var FDFCdayOneIconEL = document.createElement("IMG");
     var FDFCdayOneTempEL = document.createElement("span");
     var FDFCdayOneWindEL = document.createElement("span");
     var FDFCdayOneHumidityEL = document.createElement("span");
 
+    // day one
     // cleaning date
     console.log(data);
     var dayOnedate = data.list[2].dt_txt;
@@ -139,10 +140,19 @@ var fiveDayForecast = function(data) {
     FDFCdayOneDateEL.textContent = editedDayOneDate;
     console.log(FDFCdayOneDateEL);
 
-    FDFCdayOneIconEL.textContent = data.list[2].weather[0].icon;
-    FDFCdayOneTempEL.textContent = data.list[2].main.temp + " F";
-    FDFCdayOneWindEL.textContent = data.list[2].wind.speed + " MPH";
-    FDFCdayOneHumidityEL.textContent = data.list[2].main.humidity + " %";
+    FDFCdayOneIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[2].weather[0].icon + "@2x.png")
+    FDFCdayOneIconEL.classList = "weatherIcons";
+    FDFCdayOneTempEL.textContent = "Temp: " + data.list[2].main.temp + " F";
+    FDFCdayOneWindEL.textContent = "Wind: " + data.list[2].wind.speed + " MPH";
+    FDFCdayOneHumidityEL.textContent = "Humidity: " + data.list[2].main.humidity + " %";
+
+    // appending to day one html divs
+
+     dayOneDateEl.appendChild(FDFCdayOneDateEL);
+     dayOneIconEl.appendChild(FDFCdayOneIconEL);
+     dayOneTempEl.appendChild(FDFCdayOneTempEL);
+     dayOneWindEl.appendChild(FDFCdayOneWindEL);
+     dayOneHumidityEl.appendChild(FDFCdayOneHumidityEL);
 }
 
 var fiveDayForecastAPICall = function(data){
