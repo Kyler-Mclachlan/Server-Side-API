@@ -90,7 +90,7 @@ var listCityConditions = function(stats){
     // creating icon
     currentWeatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + stats.weather[0].icon + "@2x.png")
     currentWeatherIcon.classList = "weatherIcons";
-
+    console.log(stats);
     // adding content to created DOM elements
     cityNameEl.textContent = (stats.name + " " + "(" + formatedDate + ")");
     tempEl.textContent = ("Temp " + stats.main.temp + "F");
@@ -157,19 +157,17 @@ var fiveDayForecast = function(data) {
 
    
     // cleaning date
-    console.log(data);
-    var dayOnedate = data.list[2].dt_txt;
+    var dayOnedate = data.list[7].dt_txt;
     var editedDayOneDate = dayOnedate.substring(0,10);
     FDFCdayOneDateEL.textContent = editedDayOneDate;
-    console.log(FDFCdayOneDateEL);
 
     // grabbing icon
 
-    FDFCdayOneIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[2].weather[0].icon + "@2x.png")
+    FDFCdayOneIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[7].weather[0].icon + "@2x.png")
     FDFCdayOneIconEL.classList = "weatherIcons";
-    FDFCdayOneTempEL.textContent = "Temp: " + data.list[2].main.temp + " F";
-    FDFCdayOneWindEL.textContent = "Wind: " + data.list[2].wind.speed + " MPH";
-    FDFCdayOneHumidityEL.textContent = "Humidity: " + data.list[2].main.humidity + " %";
+    FDFCdayOneTempEL.textContent = "Temp: " + data.list[7].main.temp + " F";
+    FDFCdayOneWindEL.textContent = "Wind: " + data.list[7].wind.speed + " MPH";
+    FDFCdayOneHumidityEL.textContent = "Humidity: " + data.list[7].main.humidity + " %";
 
     // appending to day one html divs
 
@@ -178,6 +176,152 @@ var fiveDayForecast = function(data) {
      dayOneTempEl.appendChild(FDFCdayOneTempEL);
      dayOneWindEl.appendChild(FDFCdayOneWindEL);
      dayOneHumidityEl.appendChild(FDFCdayOneHumidityEL);
+
+      // day TWO
+
+    dayTwoDateEl.textContent = "";
+    dayTwoIconEl.textContent = "";
+    dayTwoTempEl.textContent = "";
+    dayTwoWindEl.textContent = "";
+    dayTwoHumidityEl.textContent = "";
+
+    var FDFCdayTwoDateEL = document.createElement("span");
+    var FDFCdayTwoIconEL = document.createElement("IMG");
+    var FDFCdayTwoTempEL = document.createElement("span");
+    var FDFCdayTwoWindEL = document.createElement("span");
+    var FDFCdayTwoHumidityEL = document.createElement("span");
+
+   
+    // cleaning date
+    var dayTwodate = data.list[15].dt_txt;
+    var editedDayTwoDate = dayTwodate.substring(0,10);
+    FDFCdayTwoDateEL.textContent = editedDayTwoDate;
+
+    // grabbing icon
+
+    FDFCdayTwoIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[15].weather[0].icon + "@2x.png")
+    FDFCdayTwoIconEL.classList = "weatherIcons";
+    FDFCdayTwoTempEL.textContent = "Temp: " + data.list[15].main.temp + " F";
+    FDFCdayTwoWindEL.textContent = "Wind: " + data.list[15].wind.speed + " MPH";
+    FDFCdayTwoHumidityEL.textContent = "Humidity: " + data.list[15].main.humidity + " %";
+    console.log(data);
+    // appending to day one html divs
+
+     dayTwoDateEl.appendChild(FDFCdayTwoDateEL);
+     dayTwoIconEl.appendChild(FDFCdayTwoIconEL);
+     dayTwoTempEl.appendChild(FDFCdayTwoTempEL);
+     dayTwoWindEl.appendChild(FDFCdayTwoWindEL);
+     dayTwoHumidityEl.appendChild(FDFCdayTwoHumidityEL);
+
+    // day Three
+
+    dayThreeDateEl.textContent = "";
+    dayThreeIconEl.textContent = "";
+    dayThreeTempEl.textContent = "";
+    dayThreeWindEl.textContent = "";
+    dayThreeHumidityEl.textContent = "";
+
+    var FDFCdayThreeDateEL = document.createElement("span");
+    var FDFCdayThreeIconEL = document.createElement("IMG");
+    var FDFCdayThreeTempEL = document.createElement("span");
+    var FDFCdayThreeWindEL = document.createElement("span");
+    var FDFCdayThreeHumidityEL = document.createElement("span");
+
+   
+    // cleaning date
+    var dayThreedate = data.list[23].dt_txt;
+    var editedDayThreeDate = dayThreedate.substring(0,10);
+    FDFCdayThreeDateEL.textContent = editedDayThreeDate;
+
+    // grabbing icon
+
+    FDFCdayThreeIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[23].weather[0].icon + "@2x.png")
+    FDFCdayThreeIconEL.classList = "weatherIcons";
+    FDFCdayThreeTempEL.textContent = "Temp: " + data.list[23].main.temp + " F";
+    FDFCdayThreeWindEL.textContent = "Wind: " + data.list[23].wind.speed + " MPH";
+    FDFCdayThreeHumidityEL.textContent = "Humidity: " + data.list[23].main.humidity + " %";
+    console.log(data);
+    // appending to day one html divs
+
+     dayThreeDateEl.appendChild(FDFCdayThreeDateEL);
+     dayThreeIconEl.appendChild(FDFCdayThreeIconEL);
+     dayThreeTempEl.appendChild(FDFCdayThreeTempEL);
+     dayThreeWindEl.appendChild(FDFCdayThreeWindEL);
+     dayThreeHumidityEl.appendChild(FDFCdayThreeHumidityEL);
+
+    // day Four
+
+    dayFourDateEl.textContent = "";
+    dayFourIconEl.textContent = "";
+    dayFourTempEl.textContent = "";
+    dayFourWindEl.textContent = "";
+    dayFourHumidityEl.textContent = "";
+
+    var FDFCdayFourDateEL = document.createElement("span");
+    var FDFCdayFourIconEL = document.createElement("IMG");
+    var FDFCdayFourTempEL = document.createElement("span");
+    var FDFCdayFourWindEL = document.createElement("span");
+    var FDFCdayFourHumidityEL = document.createElement("span");
+
+   
+    // cleaning date
+    var dayFourdate = data.list[31].dt_txt;
+    var editedDayFourDate = dayFourdate.substring(0,10);
+    FDFCdayFourDateEL.textContent = editedDayFourDate;
+
+    // grabbing icon
+
+    FDFCdayFourIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[31].weather[0].icon + "@2x.png")
+    FDFCdayFourIconEL.classList = "weatherIcons";
+    FDFCdayFourTempEL.textContent = "Temp: " + data.list[31].main.temp + " F";
+    FDFCdayFourWindEL.textContent = "Wind: " + data.list[31].wind.speed + " MPH";
+    FDFCdayFourHumidityEL.textContent = "Humidity: " + data.list[31].main.humidity + " %";
+    console.log(data);
+    // appending to day one html divs
+
+     dayFourDateEl.appendChild(FDFCdayFourDateEL);
+     dayFourIconEl.appendChild(FDFCdayFourIconEL);
+     dayFourTempEl.appendChild(FDFCdayFourTempEL);
+     dayFourWindEl.appendChild(FDFCdayFourWindEL);
+     dayFourHumidityEl.appendChild(FDFCdayFourHumidityEL);
+
+    // day Five
+
+    dayFiveDateEl.textContent = "";
+    dayFiveIconEl.textContent = "";
+    dayFiveTempEl.textContent = "";
+    dayFiveWindEl.textContent = "";
+    dayFiveHumidityEl.textContent = "";
+
+    var FDFCdayFiveDateEL = document.createElement("span");
+    var FDFCdayFiveIconEL = document.createElement("IMG");
+    var FDFCdayFiveTempEL = document.createElement("span");
+    var FDFCdayFiveWindEL = document.createElement("span");
+    var FDFCdayFiveHumidityEL = document.createElement("span");
+
+   
+    // cleaning date
+    var dayFivedate = data.list[39].dt_txt;
+    var editedDayFiveDate = dayFivedate.substring(0,10);
+    FDFCdayFiveDateEL.textContent = editedDayFiveDate;
+
+    // grabbing icon
+
+    FDFCdayFiveIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[39].weather[0].icon + "@2x.png")
+    FDFCdayFiveIconEL.classList = "weatherIcons";
+    FDFCdayFiveTempEL.textContent = "Temp: " + data.list[39].main.temp + " F";
+    FDFCdayFiveWindEL.textContent = "Wind: " + data.list[39].wind.speed + " MPH";
+    FDFCdayFiveHumidityEL.textContent = "Humidity: " + data.list[39].main.humidity + " %";
+    console.log(data);
+    // appending to day one html divs
+
+     dayFiveDateEl.appendChild(FDFCdayFiveDateEL);
+     dayFiveIconEl.appendChild(FDFCdayFiveIconEL);
+     dayFiveTempEl.appendChild(FDFCdayFiveTempEL);
+     dayFiveWindEl.appendChild(FDFCdayFiveWindEL);
+     dayFiveHumidityEl.appendChild(FDFCdayFiveHumidityEL);
+
+
 }
 
 var fiveDayForecastAPICall = function(data){
