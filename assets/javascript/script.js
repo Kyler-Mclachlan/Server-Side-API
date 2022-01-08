@@ -1,6 +1,6 @@
 var submitButtonEl = document.querySelector("#submit-button");
 var cityInputEl = document.querySelector("#exampleCity");
-var cityInfoTopDiv = document.querySelector("#cityInfoTopDiv");
+var currentDivEl = document.querySelector("#current");
 var cityHolder = document.querySelector("#cityHolder");
 var clickedSubmit = function(event){
     event.preventDefault();
@@ -17,7 +17,7 @@ var clickedSubmit = function(event){
         response.json().then(function(data) {
             console.log(data)
             console.log(city)
-            // listCityConditions(data);
+            listCityConditions(data);
             storeSearchedCities(data);
         });
       }
@@ -28,25 +28,31 @@ var clickedSubmit = function(event){
     });
   };
 
-// var listCityConditions = function(stats){
-//     // add code here to check if city exists
-//         var cityContainer = document.createElement("div");
-//         cityContainer.i = "col-12";
-//         var cityNameEl = document.createElement("span");
-//         cityNameEl.textContent = stats.name;
-//         cityContainer.appendChild(cityNameEl);
-//         cityInfoTopDiv.appendChild(cityContainer);
-//         console.log(cityNameEl);  
-// }
+var listCityConditions = function(stats){
+    // add code here to check if city exists
+    var cityContainer = document.createElement("div");;
+    var cityNameEl = document.createElement("span");
+    cityNameEl.textContent = stats.name;
+    cityContainer.appendChild(cityNameEl);
+    currentDivEl.appendChild(cityContainer);
+    console.log(cityNameEl);  
+}
 
 var storeSearchedCities = function(stats){
     var searchedCityContainer = document.createElement("button");
     searchedCityContainer.classList = "searched-cities";
     var searchedCityName = document.createElement("span");
+    // assign it an attribute with its city name, use that to search for the city
     searchedCityName.textContent = stats.name;
     searchedCityContainer.appendChild(searchedCityName);
     cityHolder.appendChild(searchedCityContainer);
 
 }
+
+
+
+
+
 submitButtonEl.addEventListener("click", clickedSubmit);
+
 // getCity();
