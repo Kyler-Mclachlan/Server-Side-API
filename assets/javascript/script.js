@@ -30,6 +30,7 @@ var clickedSubmit = function(event){
   };
 
 var listCityConditions = function(stats){
+    currentDivEl.textContent = "";
     // add code here to check if city exists
     var cityNameEl = document.createElement("span");
     var tempEl = document.createElement("span");
