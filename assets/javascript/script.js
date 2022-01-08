@@ -7,6 +7,7 @@ var cityHolder = document.querySelector("#cityHolder");
 // five day forecast elements
 
 //day One
+var dayOneParent = document.querySelector("#dayOne");
 var dayOneDateEl = document.querySelector("#dayOneDate");
 var dayOneIconEl = document.querySelector("#dayOneIcon");
 var dayOneTempEl = document.querySelector("#dayOneTemp");
@@ -81,11 +82,15 @@ var listCityConditions = function(stats){
     var tempEl = document.createElement("span");
     var windEl = document.createElement("span");
     var humidityEl = document.createElement("span");
+    var currentWeatherIcon = document.createElement("IMG");
+    currentWeatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + stats.weather[0].icon + "@2x.png")
+    currentWeatherIcon.classList = "weatherIcons";
     cityNameEl.textContent = (stats.name + " " + "(" + formatedDate + ")");
     tempEl.textContent = ("Temp " + stats.main.temp + "F");
     windEl.textContent = ("Wind " + stats.wind.speed + " MPH")
     humidityEl.textContent = ("Humidity " + stats.main.humidity + " %")
     cityNameEl.id = "currentDate";
+    cityNameEl.appendChild(currentWeatherIcon);
     currentDivEl.appendChild(cityNameEl);
     currentDivEl.appendChild(tempEl);
     currentDivEl.appendChild(windEl);
@@ -126,19 +131,30 @@ var oneCallAPI = function(data) {
 }
 
 var fiveDayForecast = function(data) {
+
+     // day one
+
+    dayOneDateEl.textContent = "";
+    dayOneIconEl.textContent = "";
+    dayOneTempEl.textContent = "";
+    dayOneWindEl.textContent = "";
+    dayOneHumidityEl.textContent = "";
+
     var FDFCdayOneDateEL = document.createElement("span");
     var FDFCdayOneIconEL = document.createElement("IMG");
     var FDFCdayOneTempEL = document.createElement("span");
     var FDFCdayOneWindEL = document.createElement("span");
     var FDFCdayOneHumidityEL = document.createElement("span");
 
-    // day one
+   
     // cleaning date
     console.log(data);
     var dayOnedate = data.list[2].dt_txt;
     var editedDayOneDate = dayOnedate.substring(0,10);
     FDFCdayOneDateEL.textContent = editedDayOneDate;
     console.log(FDFCdayOneDateEL);
+
+    // grabbing icon
 
     FDFCdayOneIconEL.setAttribute("src", "http://openweathermap.org/img/wn/" + data.list[2].weather[0].icon + "@2x.png")
     FDFCdayOneIconEL.classList = "weatherIcons";
