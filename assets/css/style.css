@@ -1,7 +1,8 @@
+/* Header Styles*/
 #grad {
     background-image: linear-gradient(to right, lightblue , darkblue);
   }
-
+/* Main Styles*/
 #main {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -29,6 +30,8 @@
     margin-top: 16px;
 }
 
+
+/* Forescast Styles*/
 #forecast {
     background-color: white;
     height: 17vw;
@@ -37,15 +40,24 @@
     justify-content: space-between;
 }
 
+#forecastTitle {
+    background-color: white;
+    margin-bottom: 16px;
+}
+
 #dayOne {
-    background-color: rgb(34, 34, 87);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
+    color: white;
 }
 
 #dayTwo {
-    background-color: rgb(34, 34, 87);
+    background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
@@ -53,7 +65,7 @@
 }
 
 #dayThree {
-    background-color: rgb(34, 34, 87);
+    background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
@@ -61,7 +73,7 @@
 }
 
 #dayFour {
-    background-color: rgb(34, 34, 87);
+    background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
@@ -69,9 +81,20 @@
 }
 
 #dayFive {
-    background-color: rgb(34, 34, 87);
+    background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
 
+}
+
+/* Forecast Details */
+
+.forecastDate {
+    font-size: 25px;
+    font-style: bold;
+}
+
+.humidity {
+    margin-bottom: 10px;
 }
