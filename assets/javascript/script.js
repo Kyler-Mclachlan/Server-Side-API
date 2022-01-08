@@ -109,6 +109,10 @@ var listCityConditions = function(stats){
      
 }
 
+var SaveLocal = function(){
+    window.localStorage.setItem("searchedCitiesArray", JSON.stringify(searchedCitiesArray));
+  }
+
 var addUVIndex = function(data) {
     var uvindexEl = document.createElement("span");
     uvindexEl.textContent = ("UV Index " + data.current.uvi)
@@ -141,12 +145,8 @@ var storeSearchedCities = function(stats){
 }
 
 
-var SaveLocal = function(){
-    window.localStorage.setItem("searchedCitiesArray", JSON.stringify(searchedCitiesArray));
-  }
-
 var pullLocal = function(){
-    savedCities = localStorage.getItem(searchedCitiesArray);
+    savedCities = localStorage.getItem("searchedCitiesArray");
     console.log(savedCities);
     if (!savedCities){
         savedCities = [];
@@ -158,7 +158,7 @@ var pullLocal = function(){
         searchedCityContainer.classList = "searched-cities";
         var searchedCityName = document.createElement("span");
 
-        searchedCityName.textContent = savedCities.cityName;
+        searchedCityName.textContent = savedCities[i].cityName;
         console.log(savedCities);
         searchedCityContainer.appendChild(searchedCityName);
         cityHolder.appendChild(searchedCityContainer);
