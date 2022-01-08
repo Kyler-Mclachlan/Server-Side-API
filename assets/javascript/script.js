@@ -33,10 +33,14 @@ var listCityConditions = function(stats){
     currentDivEl.textContent = "";
     // add code here to check if city exists
     var cityNameEl = document.createElement("span");
+    const unixTime = stats.dt;
+    const date = new Date(unixTime*1000);
+    var formatedDate = date.toLocaleDateString();
+    console.log(formatedDate);
     var tempEl = document.createElement("span");
     var windEl = document.createElement("span");
     var humidityEl = document.createElement("span");
-    cityNameEl.textContent = (stats.name + stats.dt_txt) ;
+    cityNameEl.textContent = (stats.name + " " + formatedDate);
     tempEl.textContent = ("Temp " + stats.main.temp + "F");
     windEl.textContent = ("Wind " + stats.wind.speed + " MPH")
     humidityEl.textContent = ("Humidity " + stats.main.humidity + " %")
