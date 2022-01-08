@@ -32,6 +32,13 @@
     width: 20vw;
 }
 
+.searched-cities {
+    width: 20vw;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
 #cityHolder {
     margin-top: 16px;
     padding-top: 16px;
