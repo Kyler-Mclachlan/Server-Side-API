@@ -75,21 +75,30 @@ var listCityConditions = function(stats){
     currentDivEl.textContent = "";
     // add code here to check if city exists
     var cityNameEl = document.createElement("span");
+
+    // converting time
     const unixTime = stats.dt;
     const date = new Date(unixTime*1000);
     var formatedDate = date.toLocaleDateString();
-    console.log(formatedDate);
+    
+    // creating DOM elements
     var tempEl = document.createElement("span");
     var windEl = document.createElement("span");
     var humidityEl = document.createElement("span");
     var currentWeatherIcon = document.createElement("IMG");
+
+    // creating icon
     currentWeatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + stats.weather[0].icon + "@2x.png")
     currentWeatherIcon.classList = "weatherIcons";
+
+    // adding content to created DOM elements
     cityNameEl.textContent = (stats.name + " " + "(" + formatedDate + ")");
     tempEl.textContent = ("Temp " + stats.main.temp + "F");
     windEl.textContent = ("Wind " + stats.wind.speed + " MPH")
     humidityEl.textContent = ("Humidity " + stats.main.humidity + " %")
     cityNameEl.id = "currentDate";
+
+    // appending DOM elements to HTML
     cityNameEl.appendChild(currentWeatherIcon);
     currentDivEl.appendChild(cityNameEl);
     currentDivEl.appendChild(tempEl);
