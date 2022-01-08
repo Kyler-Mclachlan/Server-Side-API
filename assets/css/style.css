@@ -11,16 +11,36 @@
     height: 44vw;
 }
 
+/* Search Section*/
 #searchedCities {
+    display: flex;
     background-color: cornsilk;
     height: fit-content;
 }
+
+#searchForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#seachTitle {
+ font-size: 36px;
+ font-weight: bold;   
+}
+
+#submit-button{
+    width: 20vw;
+}
+
+/* Details Styles*/
 
 #details {
     display: flex;
     flex-direction: column;
     background-color:white;
 }
+
+/* Current Section Styles*/
 
 #current {
     background-color: white;
