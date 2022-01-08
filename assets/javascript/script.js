@@ -3,7 +3,7 @@ var submitButtonEl = document.querySelector("#submit-button");
 var cityInputEl = document.querySelector("#exampleCity");
 var currentDivEl = document.querySelector("#current");
 var cityHolder = document.querySelector("#cityHolder");
-var savedButtonsEl = document.querySelector(".searched-cities").click(searchedButtons);
+var savedButtonsEl = document.querySelector(".searched-cities");
 
 // local storage array
 var count = 0;
@@ -415,6 +415,6 @@ var fiveDayForecastAPICall = function(data){
 
 
 submitButtonEl.addEventListener("click", clickedSubmit);
-// savedButtonsEl.addEventListener("click", searchedButtons);
+savedButtonsEl.addEventListener("click", searchedButtons);
 
 // getCity();
