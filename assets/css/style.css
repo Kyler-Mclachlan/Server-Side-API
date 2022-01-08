@@ -30,7 +30,48 @@
 }
 
 #forecast {
-    background-color: yellow;
+    background-color: white;
     height: 17vw;
     margin-bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#dayOne {
+    background-color: rgb(34, 34, 87);
+    border: 3px solid black;
+    height: 12vw;
+    width: 11vw;
+}
+
+#dayTwo {
+    background-color: rgb(34, 34, 87);
+    border: 3px solid black;
+    height: 12vw;
+    width: 11vw;
+
+}
+
+#dayThree {
+    background-color: rgb(34, 34, 87);
+    border: 3px solid black;
+    height: 12vw;
+    width: 11vw;
+
+}
+
+#dayFour {
+    background-color: rgb(34, 34, 87);
+    border: 3px solid black;
+    height: 12vw;
+    width: 11vw;
+
+}
+
+#dayFive {
+    background-color: rgb(34, 34, 87);
+    border: 3px solid black;
+    height: 12vw;
+    width: 11vw;
+
 }
