@@ -69,7 +69,7 @@ var clickedSubmit = function(event){
       }
       else {
         console.log(response);
-        alert("There was a problem with your request!");
+        alert("Please check your spelling - or enter a city in the search box!");
       }
     });
   };
