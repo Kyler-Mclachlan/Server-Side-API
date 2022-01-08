@@ -98,35 +98,47 @@
 }
 
 #dayTwo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
-
+    color: white;
 }
 
 #dayThree {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
-
+    color: white;
 }
 
 #dayFour {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
-
+    color: white;
 }
 
 #dayFive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgb(51, 71, 90);
     border: 3px solid black;
     height: 12vw;
     width: 11vw;
-
+    color: white;
 }
 
 /* Forecast Details */
