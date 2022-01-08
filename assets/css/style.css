@@ -72,6 +72,23 @@
     margin-top: -8px;
 }
 
+.redbox{
+    background-color: red;
+    opacity: 50%;
+}
+
+.yellowbox{
+    background-color: yellow;
+    opacity: 50%;
+}
+
+.greenbox{
+    background-color: rgb(0, 255, 0);
+    opacity: 50%;
+    width: fit-content;
+}
+
+
 /* Forescast Styles*/
 #forecast {
     background-color: white;
@@ -89,7 +106,7 @@
 .weatherIcons {
     height: 5vw;
     width: 5vw;
-    margin-top: -50px;
+    margin-top: -40px;
     margin-bottom: -50px;
 }
 

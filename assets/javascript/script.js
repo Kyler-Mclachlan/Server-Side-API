@@ -142,9 +142,25 @@ var SaveLocal = function(){
   }
 
 var addUVIndex = function(data) {
-    var uvindexEl = document.createElement("span");
-    uvindexEl.textContent = ("UV Index " + data.current.uvi)
-    currentDivEl.appendChild(uvindexEl);
+    var UVIholder = document.createElement("div");
+    var uvindexEltext = document.createElement("span");
+    var uvindexElscore = document.createElement("span");
+    for (i=0;i<1;i++){
+        if (data.current.uvi > .8){
+            uvindexElscore.classList = "redbox";
+        }
+        else if (data.current.uvi < .8 && data.current.uvi  > 5. ){
+            uvindexElscore.classList = "yellowbox";
+        }
+        else {
+            uvindexElscore.classList = "greenbox";
+        }
+    }
+    uvindexEltext.textContent = ("UV Index ");
+    uvindexElscore.textContent = (data.current.uvi);
+    UVIholder.appendChild(uvindexEltext);
+    UVIholder.appendChild(uvindexElscore);
+    currentDivEl.appendChild(UVIholder);
 }
 
 var storeSearchedCities = function(stats){
