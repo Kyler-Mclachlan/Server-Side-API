@@ -28,8 +28,14 @@
  font-weight: bold;   
 }
 
-#submit-button{
+#submit-button {
     width: 20vw;
+}
+
+#cityHolder {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 3px solid rgb(104, 104, 104);
 }
 
 /* Details Styles*/
