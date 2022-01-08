@@ -4,6 +4,10 @@ var cityInputEl = document.querySelector("#exampleCity");
 var currentDivEl = document.querySelector("#current");
 var cityHolder = document.querySelector("#cityHolder");
 
+// local storage array
+var count = 0;
+var searchedCitiesArray = [];
+
 // five day forecast elements
 
 //day One
@@ -56,8 +60,6 @@ var clickedSubmit = function(event){
       // request was successful
       if (response.ok) {
         response.json().then(function(data) {
-            console.log(data)
-            console.log(city)
             listCityConditions(data);
             storeSearchedCities(data);
             oneCallAPI(data);
@@ -90,7 +92,7 @@ var listCityConditions = function(stats){
     // creating icon
     currentWeatherIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + stats.weather[0].icon + "@2x.png")
     currentWeatherIcon.classList = "weatherIcons";
-    console.log(stats);
+    
     // adding content to created DOM elements
     cityNameEl.textContent = (stats.name + " " + "(" + formatedDate + ")");
     tempEl.textContent = ("Temp " + stats.main.temp + "F");
@@ -104,7 +106,7 @@ var listCityConditions = function(stats){
     currentDivEl.appendChild(tempEl);
     currentDivEl.appendChild(windEl);
     currentDivEl.appendChild(humidityEl);
-    console.log(cityNameEl);  
+     
 }
 
 var addUVIndex = function(data) {
@@ -114,14 +116,56 @@ var addUVIndex = function(data) {
 }
 
 var storeSearchedCities = function(stats){
+
+    // create DOM elements
     var searchedCityContainer = document.createElement("button");
     searchedCityContainer.classList = "searched-cities";
     var searchedCityName = document.createElement("span");
-    // assign it an attribute with its city name, use that to search for the city
+
+    //assinging id for local storage
+    searchedCityName.id = count;
+    count++;
+    console.log(count);
+    console.log(searchedCityName)
+    
+    // appending inputs for DOM to html
     searchedCityName.textContent = stats.name;
     searchedCityContainer.appendChild(searchedCityName);
     cityHolder.appendChild(searchedCityContainer);
+
+    // creating object for local storage and pushing to array
+    var searchedCityNameObject = {cityName: stats.name, id: searchedCityName.id};
+    searchedCitiesArray.push(searchedCityNameObject);
+    console.log(searchedCitiesArray)
+    SaveLocal();
 }
+
+
+var SaveLocal = function(){
+    window.localStorage.setItem("searchedCitiesArray", JSON.stringify(searchedCitiesArray));
+  }
+
+var pullLocal = function(){
+    savedCities = localStorage.getItem(searchedCitiesArray);
+    console.log(savedCities);
+    if (!savedCities){
+        savedCities = [];
+        return false;
+    }
+    savedCities = JSON.parse(savedCities);
+    for (var i = 0; i < savedCities.length; i++){
+        var searchedCityContainer = document.createElement("button");
+        searchedCityContainer.classList = "searched-cities";
+        var searchedCityName = document.createElement("span");
+
+        searchedCityName.textContent = savedCities.cityName;
+        console.log(savedCities);
+        searchedCityContainer.appendChild(searchedCityName);
+        cityHolder.appendChild(searchedCityContainer);
+    }
+}
+
+pullLocal();
 
 var oneCallAPI = function(data) {
     var OCApi = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&dt=" + data.dt + "&exclude=hourly,daily&appid=ee74d7c74e74e6fbcc878740bbff7545";
@@ -204,7 +248,7 @@ var fiveDayForecast = function(data) {
     FDFCdayTwoTempEL.textContent = "Temp: " + data.list[15].main.temp + " F";
     FDFCdayTwoWindEL.textContent = "Wind: " + data.list[15].wind.speed + " MPH";
     FDFCdayTwoHumidityEL.textContent = "Humidity: " + data.list[15].main.humidity + " %";
-    console.log(data);
+
     // appending to day one html divs
 
      dayTwoDateEl.appendChild(FDFCdayTwoDateEL);
@@ -240,7 +284,7 @@ var fiveDayForecast = function(data) {
     FDFCdayThreeTempEL.textContent = "Temp: " + data.list[23].main.temp + " F";
     FDFCdayThreeWindEL.textContent = "Wind: " + data.list[23].wind.speed + " MPH";
     FDFCdayThreeHumidityEL.textContent = "Humidity: " + data.list[23].main.humidity + " %";
-    console.log(data);
+    
     // appending to day one html divs
 
      dayThreeDateEl.appendChild(FDFCdayThreeDateEL);
@@ -276,7 +320,7 @@ var fiveDayForecast = function(data) {
     FDFCdayFourTempEL.textContent = "Temp: " + data.list[31].main.temp + " F";
     FDFCdayFourWindEL.textContent = "Wind: " + data.list[31].wind.speed + " MPH";
     FDFCdayFourHumidityEL.textContent = "Humidity: " + data.list[31].main.humidity + " %";
-    console.log(data);
+    
     // appending to day one html divs
 
      dayFourDateEl.appendChild(FDFCdayFourDateEL);
@@ -312,7 +356,7 @@ var fiveDayForecast = function(data) {
     FDFCdayFiveTempEL.textContent = "Temp: " + data.list[39].main.temp + " F";
     FDFCdayFiveWindEL.textContent = "Wind: " + data.list[39].wind.speed + " MPH";
     FDFCdayFiveHumidityEL.textContent = "Humidity: " + data.list[39].main.humidity + " %";
-    console.log(data);
+    
     // appending to day one html divs
 
      dayFiveDateEl.appendChild(FDFCdayFiveDateEL);
@@ -339,10 +383,6 @@ var fiveDayForecastAPICall = function(data){
         }
       });
 }
-
-
-
-
 
 
 submitButtonEl.addEventListener("click", clickedSubmit);
