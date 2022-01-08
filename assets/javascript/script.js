@@ -60,6 +60,7 @@ var clickedSubmit = function(event){
             listCityConditions(data);
             storeSearchedCities(data);
             oneCallAPI(data);
+            fiveDayForecastAPICall(data);
         });
       }
       else {
@@ -125,11 +126,27 @@ var oneCallAPI = function(data) {
 }
 
 var fiveDayForecast = function(data) {
+    var FDFCdayOneDateEL = document.createElement("span");
+    var FDFCdayOneIconEL = document.createElement("span");
+    var FDFCdayOneTempEL = document.createElement("span");
+    var FDFCdayOneWindEL = document.createElement("span");
+    var FDFCdayOneHumidityEL = document.createElement("span");
 
+    // cleaning date
+    console.log(data);
+    var dayOnedate = data.list[2].dt_txt;
+    var editedDayOneDate = dayOnedate.substring(0,10);
+    FDFCdayOneDateEL.textContent = editedDayOneDate;
+    console.log(FDFCdayOneDateEL);
+
+    FDFCdayOneIconEL.textContent = data.list[2].weather[0].icon;
+    FDFCdayOneTempEL.textContent = data.list[2].main.temp + " F";
+    FDFCdayOneWindEL.textContent = data.list[2].wind.speed + " MPH";
+    FDFCdayOneHumidityEL.textContent = data.list[2].main.humidity + " %";
 }
 
 var fiveDayForecastAPICall = function(data){
-    var forecastWeatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=ee74d7c74e74e6fbcc878740bbff7545";
+    var forecastWeatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + data.name + "&units=imperial&appid=ee74d7c74e74e6fbcc878740bbff7545";
     fetch(forecastWeatherAPI).then(function(response) {
         // request was successful
         if (response.ok) {
